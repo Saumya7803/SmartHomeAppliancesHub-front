@@ -1,0 +1,26 @@
+export function useFilters() {
+  return {
+    search: "",
+    setSearch: () => {},
+    categories: [],
+    toggleCategory: () => {},
+    replaceCategories: () => {},
+    brands: [],
+    toggleBrand: () => {},
+    minPrice: "",
+    setMinPrice: () => {},
+    maxPrice: "",
+    setMaxPrice: () => {},
+    minRating: "",
+    setMinRating: () => {},
+    sort: "",
+    setSort: () => {},
+    clearFilters: () => {},
+    pageItems: [],
+    totalCount: 0,
+    page: 1,
+    totalPages: 1,
+    ITEMS_PER_PAGE: 0,
+    setPage: () => {},
+  };
+}
