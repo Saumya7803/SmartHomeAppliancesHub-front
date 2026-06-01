@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import background from "../../imgs/background.png";
+import background from "../../imgs/background.PNG";
 import { brandLogos } from "../data/brandLogos";
 
 const ecosystemFeatures = [
