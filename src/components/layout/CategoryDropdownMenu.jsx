@@ -11,6 +11,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 import { getCategoryGroups, resolveCategoryName } from "../../data/categoryTaxonomy";
+import { buildApiUrl } from "../../utils/apiBase";
 
 const CLOSE_DELAY_MS = 320;
 const MOBILE_BREAKPOINT_PX = 920;
@@ -201,7 +202,7 @@ export default function CategoryDropdownMenu({ onNavigate }) {
     async function fetchCategories() {
       setCategoriesLoading(true);
       try {
-        const response = await fetch("/api/categories", { signal: controller.signal });
+        const response = await fetch(buildApiUrl("/categories"), { signal: controller.signal });
         if (!response.ok) {
           throw new Error(`Failed to fetch categories (${response.status})`);
         }

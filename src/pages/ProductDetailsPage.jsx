@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import EnquiryModal from "../components/enquiry/EnquiryModal";
 import ProductImage from "../components/product/ProductImage";
+import { buildApiUrl } from "../utils/apiBase";
 import { normalizePublicProduct } from "../utils/publicProductMapper";
 
 function isPriceSpecificationKey(key) {
@@ -24,7 +25,7 @@ export default function ProductDetailsPage() {
       setError("");
 
       try {
-        const response = await fetch("/api/products", { signal: controller.signal });
+        const response = await fetch(buildApiUrl("/products"), { signal: controller.signal });
         if (!response.ok) {
           throw new Error(`Failed to fetch products (${response.status})`);
         }
