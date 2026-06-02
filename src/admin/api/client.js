@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_ADMIN_API_URL || "/api";
+const API_ORIGIN = String(import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+const API_BASE_URL = import.meta.env.VITE_ADMIN_API_URL || (API_ORIGIN ? `${API_ORIGIN}/api` : "/api");
 
 async function request(path, { token, method = "GET", body } = {}) {
   let response;
@@ -14,7 +15,7 @@ async function request(path, { token, method = "GET", body } = {}) {
     });
   } catch {
     throw new Error(
-      "Cannot reach backend API. Start backend server on http://localhost:5000 and verify MySQL is running."
+      "Cannot reach backend API. Verify the deployed backend URL and MySQL connection."
     );
   }
 
@@ -37,7 +38,7 @@ async function request(path, { token, method = "GET", body } = {}) {
 
     if (looksLikeProxyError) {
       throw new Error(
-        "Backend API is not running on http://localhost:5000. Start backend and try again."
+        "Backend API is not reachable. Verify the deployed backend URL and MySQL connection."
       );
     }
 

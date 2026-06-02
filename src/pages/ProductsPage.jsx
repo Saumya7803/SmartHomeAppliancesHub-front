@@ -21,6 +21,7 @@ import ProductImage from "../components/product/ProductImage";
 import { useCustomerAuth } from "../customer/hooks/useCustomerAuth";
 import { contactInfo } from "../data/contactInfo";
 import { getAllCanonicalCategories, resolveCategoryName } from "../data/categoryTaxonomy";
+import { buildApiUrl } from "../utils/apiBase";
 import { normalizePublicProduct } from "../utils/publicProductMapper";
 
 const SORT_OPTIONS = [
@@ -271,7 +272,7 @@ export default function ProductsPage() {
       setError("");
 
       try {
-        const response = await fetch("/api/products", { signal: controller.signal });
+        const response = await fetch(buildApiUrl("/products"), { signal: controller.signal });
         if (!response.ok) {
           throw new Error(`Failed to fetch products (${response.status})`);
         }

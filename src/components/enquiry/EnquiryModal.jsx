@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { contactInfo } from "../../data/contactInfo";
+import { buildApiUrl } from "../../utils/apiBase";
 
 const INITIAL_FORM = {
   customer_name: "",
@@ -51,7 +52,7 @@ export default function EnquiryModal({ product, onClose }) {
     setError("");
 
     try {
-      const response = await fetch("/api/products/enquiries", {
+      const response = await fetch(buildApiUrl("/products/enquiries"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
