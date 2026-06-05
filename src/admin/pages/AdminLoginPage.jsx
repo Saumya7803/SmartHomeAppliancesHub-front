@@ -6,6 +6,7 @@ import { getDefaultPanelPath } from "../utils/roles";
 export default function AdminLoginPage() {
   const { isAuthenticated, isLoading, login, user } = useAdminAuth();
   const navigate = useNavigate();
+  const showDevCredentials = import.meta.env.DEV;
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -74,13 +75,15 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <div className="admin-login-hint">
-          <p>Super Admin: admin@smarthome.com / Admin@123</p>
-          <p>Admin: manager@smarthome.com / Manager@123</p>
-          <p>Development Team: dev@smarthome.com / Dev@123</p>
-          <p>Operator: operator@smarthome.com / Operator@123</p>
-          <p>Sales Team: sales@smarthomeappliances.co / Sales@123</p>
-        </div>
+        {showDevCredentials ? (
+          <div className="admin-login-hint">
+            <p>Super Admin: admin@smarthome.com / Admin@123</p>
+            <p>Admin: manager@smarthome.com / Manager@123</p>
+            <p>Development Team: dev@smarthome.com / Dev@123</p>
+            <p>Operator: operator@smarthome.com / Operator@123</p>
+            <p>Sales Team: sales@smarthomeappliances.co / Sales@123</p>
+          </div>
+        ) : null}
       </section>
     </main>
   );
